@@ -1,2 +1,5 @@
 torch
 numpy
+pomegranate
+structlog
+python-dotenv
