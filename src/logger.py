@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-def logger_config(process_name: Optional[str], level: str = os.getenv("LOG_LEVEL"), pretty: bool = True):
+def logger_config(process_name: Optional[str], level: str = os.getenv("LOG_LEVEL") or logging.INFO, pretty: bool = True):
     """
     Configures the logger for the application.
 
