@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-def logger_config(process_name: Optional[str], level: str = os.getenv("LOG_LEVEL") or logging.INFO, pretty: bool = True):
+def logger_config(process_name: Optional[str], level: str = os.getenv("LOG_LEVEL"), pretty: bool = True):
     """
     Configures the logger for the application.
 
@@ -14,6 +14,9 @@ def logger_config(process_name: Optional[str], level: str = os.getenv("LOG_LEVEL
     :param level: Logging level (default is logging.INFO).
     :param pretty: If True, configures the logger to use pretty formatting.
     """
+    if not level or level not in ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]:
+        level = "INFO" # Default logging level if not set in environment or invalid
+
     logging.basicConfig(level=level)
 
     processors = [
